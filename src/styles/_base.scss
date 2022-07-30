@@ -8,6 +8,8 @@
 }
 body {
 	min-height: 100vh;
+	max-width: 1320px;
+	margin: 0 auto;
 	font-family: $font-kumbh;
 }
 button {
@@ -19,4 +21,10 @@ button {
 	letter-spacing: inherit;
 	font-size: inherit;
 	text-align: inherit;
+}
+li {
+	list-style: none;
+	a {
+		text-decoration: none;
+	}
 }

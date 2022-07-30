@@ -8,28 +8,94 @@
 }
 
 .header {
-	height: 4rem;
 	max-height: 100%;
-	background: $neutral100;
 	width: 100%;
+	background: $neutral0;
 	@include breakpoint(md) {
-		height: 6rem;
+		padding: 0 2rem;
 	}
 	&__content {
-		max-width: 1920px;
-		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1.2rem 1.4rem;
+		padding: 1.4rem;
+		@include breakpoint(md) {
+			border-bottom: 2px solid $neutral100;
+			padding: 2.5rem 0;
+			#menuIcon {
+				display: none;
+			}
+		}
 		&__nav {
 			@extend %nav-side;
+			.navList {
+				display: none;
+				@include breakpoint(md) {
+					display: flex;
+					align-items: center;
+					gap: 2rem;
+					margin-left: 2rem;
+					li {
+						a {
+							position: relative;
+							color: $neutral300;
+							font-weight: $fnormal;
+							&:hover {
+								color: $neutral500;
+								&::after {
+									left: 0;
+									bottom: -2.7rem;
+									content: "";
+									position: absolute;
+									height: 0.25rem;
+									width: 100%;
+									background: $primary200;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 		&__user {
+			position: relative;
 			@extend %nav-side;
+			@include breakpoint(md) {
+				gap: 1.7rem;
+			}
+			&::after {
+				display: none;
+				content: "3";
+				text-align: center;
+				font-size: 0.6rem;
+				color: $neutral0;
+				position: absolute;
+				top: 4px;
+				left: 8px;
+				z-index: 6;
+				padding: 2px 8px;
+				border-radius: 10px;
+				background-color: $primary200;
+			}
+			#cart {
+				margin: auto;
+				cursor: pointer;
+				&:hover {
+					filter: brightness(0) saturate(100%);
+				}
+			}
 			#profile {
+				cursor: pointer;
 				max-width: 1.5rem;
 				aspect-ratio: 1/1;
+				border: 2px solid transparent;
+				border-radius: 50%;
+				&:hover {
+					border-color: $primary200;
+				}
+				@include breakpoint(md) {
+					max-width: 2.7rem;
+				}
 			}
 		}
 	}
