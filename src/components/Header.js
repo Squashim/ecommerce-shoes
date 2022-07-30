@@ -5,12 +5,14 @@ import logo from "../images/logo.svg";
 import menu from "../images/icon-menu.svg";
 import cart from "../images/icon-cart.svg";
 import avatar from "../images/image-avatar.png";
+import exit from "../images/icon-close.svg";
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
 	return (
 		<div className={styles.header}>
+			<div className={`${menuOpen ? styles[`black-bg`] : {}}`}></div>
 			<div className={styles.header__content}>
 				<div className={styles.header__content__left}>
 					<img
@@ -20,20 +22,28 @@ const Header = () => {
 						onClick={menuToggler}
 					></img>
 					<img src={logo} alt="sneakers"></img>
-					<nav className={`styles[nav--open]`}>
-						<a className={styles.nav__item} href="#">
+					<nav
+						className={`${styles.nav} ${menuOpen ? styles[`nav--open`] : {}}`}
+					>
+						<img
+							src={exit}
+							alt=""
+							id={styles.exitIcon}
+							onClick={menuToggler}
+						></img>
+						<a className={styles.item} href="#">
 							Collections
 						</a>
-						<a className={styles.nav__item} href="#">
+						<a className={styles.item} href="#">
 							Men
 						</a>
-						<a className={styles.nav__item} href="#">
+						<a className={styles.item} href="#">
 							Women
 						</a>
-						<a className={styles.nav__item} href="#">
+						<a className={styles.item} href="#">
 							About
 						</a>
-						<a className={styles.nav__item} href="#">
+						<a className={styles.item} href="#">
 							Contact
 						</a>
 					</nav>

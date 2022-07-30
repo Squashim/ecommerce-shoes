@@ -6,7 +6,19 @@
 	align-items: flex-end;
 	gap: 1.2rem;
 }
-
+.black-bg {
+	background: $neutral500;
+	opacity: 75%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 1;
+	@include breakpoint(md) {
+		display: none;
+	}
+}
 .header {
 	max-height: 100%;
 	width: 100%;
@@ -19,6 +31,7 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 1.4rem;
+		transition: 0.3s ease all;
 		#menuIcon {
 			cursor: pointer;
 			&:hover {
@@ -41,7 +54,11 @@
 					align-items: center;
 					gap: 2rem;
 					margin-left: 2rem;
-					a {
+					#exitIcon {
+						display: none;
+					}
+					.item {
+						transition: 0.3s all ease;
 						text-decoration: none;
 						position: relative;
 						color: $neutral300;
@@ -61,10 +78,34 @@
 					}
 				}
 				&--open {
+					padding: 1.6rem;
+					#exitIcon {
+						width: 1rem;
+						cursor: pointer;
+						margin-bottom: 2.5rem;
+						&:hover {
+							filter: brightness(0) saturate(100%);
+						}
+					}
+					.item {
+						text-decoration: none;
+						color: $neutral500;
+						font-weight: $fbold;
+						font-size: 1.2rem;
+					}
+					background-color: $neutral0;
 					display: flex;
+					gap: 1.2rem;
+					flex-direction: column;
+					top: 0;
+					left: 0;
 					position: absolute;
 					height: 100vh;
-					width: 60vw;
+					width: 70vw;
+					z-index: 2;
+					@include breakpoint(md) {
+						display: none;
+					}
 				}
 			}
 		}
@@ -83,7 +124,6 @@
 				position: absolute;
 				top: 4px;
 				left: 8px;
-				z-index: 6;
 				padding: 2px 8px;
 				border-radius: 10px;
 				background-color: $primary200;
@@ -111,29 +151,3 @@
 		}
 	}
 }
-
-/* @include breakpoint(md) {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-left: 2rem;
-    li {
-        a {
-            position: relative;
-            color: $neutral300;
-            font-weight: $fnormal;
-            &:hover {
-                color: $neutral500;
-                &::after {
-                    left: 0;
-                    bottom: calc(-2.5rem + -13.19px);
-                    content: "";
-                    position: absolute;
-                    height: 0.25rem;
-                    width: 100%;
-                    background: $primary200;
-                }
-            }
-        }
-    }
-} */
