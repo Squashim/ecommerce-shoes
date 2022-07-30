@@ -19,6 +19,12 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 1.4rem;
+		#menuIcon {
+			cursor: pointer;
+			&:hover {
+				filter: brightness(0) saturate(100%);
+			}
+		}
 		@include breakpoint(md) {
 			border-bottom: 2px solid $neutral100;
 			padding: 2.5rem 0;
@@ -26,38 +32,43 @@
 				display: none;
 			}
 		}
-		&__nav {
+		&__left {
 			@extend %nav-side;
-			.navList {
+			.nav {
 				display: none;
 				@include breakpoint(md) {
 					display: flex;
 					align-items: center;
 					gap: 2rem;
 					margin-left: 2rem;
-					li {
-						a {
-							position: relative;
-							color: $neutral300;
-							font-weight: $fnormal;
-							&:hover {
-								color: $neutral500;
-								&::after {
-									left: 0;
-									bottom: -2.7rem;
-									content: "";
-									position: absolute;
-									height: 0.25rem;
-									width: 100%;
-									background: $primary200;
-								}
+					a {
+						text-decoration: none;
+						position: relative;
+						color: $neutral300;
+						font-weight: $fnormal;
+						&:hover {
+							color: $neutral500;
+							&::after {
+								left: 0;
+								bottom: calc(-2.5rem + -13.19px);
+								content: "";
+								position: absolute;
+								height: 0.25rem;
+								width: 100%;
+								background: $primary200;
 							}
 						}
 					}
 				}
+				&--open {
+					display: flex;
+					position: absolute;
+					height: 100vh;
+					width: 60vw;
+				}
 			}
 		}
-		&__user {
+		&__right {
 			position: relative;
 			@extend %nav-side;
 			@include breakpoint(md) {
@@ -100,3 +111,29 @@
 		}
 	}
 }
+
+/* @include breakpoint(md) {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-left: 2rem;
+    li {
+        a {
+            position: relative;
+            color: $neutral300;
+            font-weight: $fnormal;
+            &:hover {
+                color: $neutral500;
+                &::after {
+                    left: 0;
+                    bottom: calc(-2.5rem + -13.19px);
+                    content: "";
+                    position: absolute;
+                    height: 0.25rem;
+                    width: 100%;
+                    background: $primary200;
+                }
+            }
+        }
+    }
+} */
