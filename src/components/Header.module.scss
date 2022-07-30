@@ -1,0 +1,36 @@
+@import "../styles/var";
+
+%nav-side {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	gap: 1.2rem;
+}
+
+.header {
+	height: 4rem;
+	max-height: 100%;
+	background: $neutral100;
+	width: 100%;
+	@include breakpoint(md) {
+		height: 6rem;
+	}
+	&__content {
+		max-width: 1920px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.2rem 1.4rem;
+		&__nav {
+			@extend %nav-side;
+		}
+		&__user {
+			@extend %nav-side;
+			#profile {
+				max-width: 1.5rem;
+				aspect-ratio: 1/1;
+			}
+		}
+	}
+}

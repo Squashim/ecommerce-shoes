@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+//Colors
+$primary200: hsl(26, 100%, 55%);
+$primary100: hsl(25, 100%, 94%);
+
+$neutral400: hsl(220, 13%, 13%);
+$neutral300: hsl(219, 9%, 45%);
+$neutral200: hsl(220, 14%, 75%);
+$neutral100: hsl(223, 64%, 98%);
+$neutral0: hsl(0, 0%, 100%);
+//(with 75% opacity for lightbox background)
+$neutral500: hsl(0, 0%, 0%);
+
+//Font
+$fnormal: 400;
+$fbold: 700;
+$fsize: 16px;
+$font-kumbh: "Kumbh Sans", sans-serif;
+
+//Mixin
+$sm: 37.5em;
+$md: 48em;
+$lg: 64em;
+$xl: 75em;
+
+@mixin breakpoint($point) {
+	@if $point == md {
+		@media (min-width: $md) {
+			@content;
+		}
+	}
+}
