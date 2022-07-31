@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Content.module.scss";
 
 import iconNext from "../images/icon-next.svg";
@@ -6,6 +6,7 @@ import iconPrev from "../images/icon-previous.svg";
 import iconCart from "../images/icon-cart.svg";
 import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
+import iconClose from "../images/icon-close.svg";
 
 import image1 from "../images/image-product-1.jpg";
 import image2 from "../images/image-product-2.jpg";
@@ -14,18 +15,35 @@ import image4 from "../images/image-product-4.jpg";
 
 const Content = () => {
 	const images = [image1, image2, image3, image4];
+	const currentImage = document.querySelector("#mainImg");
 
 	function handlePhotoChange(e) {
 		const currentImg = document.querySelector(".bigImg");
 		const selected = e.target.src;
-		currentImg.setAttribute("src", selected);
 	}
+
+	const [lightroomOpen, toggleLightroom] = useState(false);
+	const lighroomToggler = () => toggleLightroom((p) => !p);
+
+	const Image = ({ source, id, func }) => {
+		return <img src={source} id={id} onClick={func}></img>;
+	};
 
 	return (
 		<main className={styles.main}>
+			<div className={lightroomOpen ? styles.lightroom : styles.hidden}>
+				<div className={styles.lightroom__container}>
+					{/* Export to another component -- lightroom*/}
+					<img src={iconClose} alt="" className={styles.closeIcon}></img>
+					<Image
+						className={styles.lighroom__main__img}
+						source={currentImage.src}
+					/>
+				</div>
+			</div>
 			<div className={styles.main__images}>
 				<div className={styles.currentImg}>
-					<img src={image1} className="bigImg"></img>
+					<Image source={image1} id="mainImg" func={lighroomToggler} />
 				</div>
 				<div className={styles.otherImg}>
 					{images.map((img, key) => {
