@@ -15,7 +15,6 @@ import image4 from "../images/image-product-4.jpg";
 
 const Content = () => {
 	const images = [image1, image2, image3, image4];
-	const currentImage = document.querySelector("#mainImg");
 
 	function handlePhotoChange(e) {
 		const currentImg = document.querySelector(".bigImg");
@@ -64,15 +63,12 @@ const Content = () => {
 						className={styles.closeIcon}
 						onClick={lighroomToggler}
 					></img>
-					<Image
-						className={styles.lighroom__main__img}
-						source={currentImage.src}
-					/>
+					<img className={styles.lighroom__main__img} src={image1} />
 				</div>
 			</div>
 			<div className={styles.main__images}>
 				<div className={styles.currentImg}>
-					<Image source={image1} id="mainImg" func={lighroomToggler} />
+					<img src={image1} id={styles.mainImg} onClick={lighroomToggler} />
 				</div>
 				<div className={styles.otherImg}>
 					{images.map((img, key) => {
