@@ -13,19 +13,31 @@ import image3 from "../images/image-product-3.jpg";
 import image4 from "../images/image-product-4.jpg";
 
 const Content = () => {
-	const array = [image1, image2, image3, image4];
+	const images = [image1, image2, image3, image4];
+
+	function handlePhotoChange(e) {
+		const currentImg = document.querySelector(".bigImg");
+		const selected = e.target.src;
+		currentImg.setAttribute("src", selected);
+	}
 
 	return (
 		<main className={styles.main}>
 			<div className={styles.main__images}>
 				<div className={styles.currentImg}>
-					<img src={image1}></img>
+					<img src={image1} className="bigImg"></img>
 				</div>
 				<div className={styles.otherImg}>
-					<img src={image1}></img>
-					<img src={image2}></img>
-					<img src={image3}></img>
-					<img src={image4}></img>
+					{images.map((img, key) => {
+						return (
+							<img
+								id={key}
+								key={key}
+								src={img}
+								onClick={handlePhotoChange}
+							></img>
+						);
+					})}
 				</div>
 			</div>
 			<div className={styles.main__desc}>
@@ -46,7 +58,7 @@ const Content = () => {
 				<div className={styles.buy}>
 					<div className={styles.quan}>
 						<img src={iconMinus} alt=""></img>
-						<p></p>
+						<p>0</p>
 						<img src={iconPlus} alt=""></img>
 					</div>
 					<button className={styles.cartAdd}>
