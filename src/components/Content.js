@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Content.module.scss";
 
 import iconNext from "../images/icon-next.svg";
@@ -29,12 +29,41 @@ const Content = () => {
 		return <img src={source} id={id} onClick={func}></img>;
 	};
 
+	const [size, setSize] = useState({
+		width: undefined,
+		height: undefined,
+	});
+
+	useEffect(() => {
+		const handleResize = () => {
+			setSize({
+				width: window.innerWidth,
+				height: window.innerHeight,
+			});
+		};
+		window.addEventListener("resize", handleResize);
+
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	useEffect(() => {
+		if (size.width > 768 && lightroomOpen) {
+			toggleLightroom(false);
+		}
+	}, [size.width, toggleLightroom]);
+
 	return (
 		<main className={styles.main}>
+			{/* error somwhere*/}
 			<div className={lightroomOpen ? styles.lightroom : styles.hidden}>
 				<div className={styles.lightroom__container}>
 					{/* Export to another component -- lightroom*/}
-					<img src={iconClose} alt="" className={styles.closeIcon}></img>
+					<img
+						src={iconClose}
+						alt=""
+						className={styles.closeIcon}
+						onClick={lighroomToggler}
+					></img>
 					<Image
 						className={styles.lighroom__main__img}
 						source={currentImage.src}
