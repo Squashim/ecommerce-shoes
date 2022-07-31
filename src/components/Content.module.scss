@@ -1,7 +1,6 @@
 @import "../styles/var";
 .main {
-	height: 100vh;
-	width: 100%;
+	min-width: 100%;
 	padding: 5rem;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -36,7 +35,6 @@
 		flex-direction: column;
 		align-items: flex-start;
 		padding: 3.1rem;
-		margin: 2rem 0;
 		span {
 			color: $primary200;
 			text-transform: uppercase;
@@ -49,9 +47,33 @@
 			font-size: 2.5rem;
 		}
 		p {
-			margin: 2rem 0;
+			margin: 1.5rem 0;
 			color: $neutral300;
 			line-height: 1.5rem;
+		}
+		.prices {
+			&__new {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				gap: 1rem;
+				span {
+					background-color: $primary100;
+					padding: 2px 5px;
+					text-align: center;
+					border-radius: 0.3rem;
+				}
+			}
+			p {
+				text-decoration: line-through;
+				font-weight: $fbold;
+				margin: 0;
+				opacity: 0.5;
+			}
+		}
+		.buy {
+			.quan {
+			}
 		}
 	}
 }

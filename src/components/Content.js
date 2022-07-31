@@ -37,11 +37,23 @@ const Content = () => {
 					the weather can offer.
 				</p>
 				<div className={styles.prices}>
-					<h2>$125.00</h2>
-					<span>50%</span>
+					<div className={styles.prices__new}>
+						<h2>$125.00</h2>
+						<span>50%</span>
+					</div>
 					<p>$250.00</p>
 				</div>
-				<div className={styles.buy}></div>
+				<div className={styles.buy}>
+					<div className={styles.quan}>
+						<img src={iconMinus} alt=""></img>
+						<p></p>
+						<img src={iconPlus} alt=""></img>
+					</div>
+					<button className={styles.cartAdd}>
+						<img src={iconCart} alt=""></img>
+						Add to cart
+					</button>
+				</div>
 			</div>
 		</main>
 	);
