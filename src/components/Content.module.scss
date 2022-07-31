@@ -1,0 +1,57 @@
+@import "../styles/var";
+.main {
+	height: 100vh;
+	width: 100%;
+	padding: 5rem;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 5rem;
+	&__images {
+		max-width: 100%;
+		max-height: 100%;
+		margin: 1rem;
+		.currentImg {
+			img {
+				cursor: pointer;
+				width: 100%;
+				border-radius: 1rem;
+				box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.218);
+			}
+		}
+		.otherImg {
+			margin-top: 1.5rem;
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 1.5rem;
+			img {
+				cursor: pointer;
+				width: 100%;
+				border-radius: 1rem;
+				box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.086);
+			}
+		}
+	}
+	&__desc {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 3.1rem;
+		margin: 2rem 0;
+		span {
+			color: $primary200;
+			text-transform: uppercase;
+			font-weight: $fbold;
+			font-size: 0.9rem;
+			letter-spacing: 0.5px;
+			margin: 0.8rem 0;
+		}
+		h1 {
+			font-size: 2.5rem;
+		}
+		p {
+			margin: 2rem 0;
+			color: $neutral300;
+			line-height: 1.5rem;
+		}
+	}
+}
