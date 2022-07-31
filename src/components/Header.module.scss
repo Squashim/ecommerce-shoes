@@ -78,33 +78,40 @@
 					}
 				}
 				&--open {
-					padding: 1.6rem;
-					#exitIcon {
-						width: 1rem;
-						cursor: pointer;
-						margin-bottom: 2.5rem;
-						&:hover {
-							filter: brightness(0) saturate(100%);
-						}
-					}
-					.item {
-						text-decoration: none;
-						color: $neutral500;
-						font-weight: $fbold;
-						font-size: 1.2rem;
-					}
 					background-color: $neutral0;
 					display: flex;
 					gap: 1.2rem;
 					flex-direction: column;
 					top: 0;
 					left: 0;
+					right: 100%;
 					position: absolute;
 					height: 100vh;
 					width: 70vw;
 					z-index: 2;
+					padding: 1.6rem;
 					@include breakpoint(md) {
 						display: none;
+					}
+					#exitIcon {
+						width: 1rem;
+						cursor: pointer;
+						margin-bottom: 2.5rem;
+						transition: 0.3s ease all;
+						&:hover {
+							filter: brightness(0) saturate(100%);
+							transform: scale(1.1);
+						}
+					}
+					.item {
+						transition: 0.3s ease all;
+						text-decoration: none;
+						color: $neutral500;
+						font-weight: $fbold;
+						font-size: 1.2rem;
+						&:hover {
+							transform: scale(0.96);
+						}
 					}
 				}
 			}

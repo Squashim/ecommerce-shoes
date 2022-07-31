@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 
 import logo from "../images/logo.svg";
@@ -10,6 +10,29 @@ import exit from "../images/icon-close.svg";
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
+	const [size, setSize] = useState({
+		width: undefined,
+		height: undefined,
+	});
+
+	useEffect(() => {
+		const handleResize = () => {
+			setSize({
+				width: window.innerWidth,
+				height: window.innerHeight,
+			});
+		};
+		window.addEventListener("resize", handleResize);
+
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	useEffect(() => {
+		if (size.width > 768 && menuOpen) {
+			setMenuOpen(false);
+		}
+	}, [size.width, menuOpen]);
+
 	return (
 		<div className={styles.header}>
 			<div className={`${menuOpen ? styles[`black-bg`] : {}}`}></div>
