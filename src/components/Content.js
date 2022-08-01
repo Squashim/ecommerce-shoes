@@ -15,16 +15,30 @@ const Content = () => {
 	const image4 = require(`../images/image-product-4.jpg`);
 	const images = { image1, image2, image3, image4 };
 
+	const Image = ({ source, style, click }) => {
+		return <img src={source} alt="" className={style} onClick={click}></img>;
+	};
+
 	const HandlePhotoClick = (event) => {
 		const selectedImg = event.target;
 		const currentImg = document.querySelectorAll(".currentImg");
-
+		const otherImgLightroom = document.querySelectorAll(`.otherLight`);
+		const otherImg = document.querySelectorAll(`.other`);
+		//reset
+		otherImg.forEach((image) => {
+			image.classList.remove(`${styles.selected}`);
+		});
+		otherImgLightroom.forEach((image) => {
+			image.classList.remove(`${styles.selected}`);
+		});
+		//assign
 		currentImg.forEach((img) => {
-			if (selectedImg.src === img.src) {
-				return;
-			} else {
-				selectedImg.classList.add(`${styles.selected}`);
-				img.src = selectedImg.src;
+			selectedImg.classList.add(`${styles.selected}`);
+			img.src = selectedImg.src;
+		});
+		otherImgLightroom.forEach((image) => {
+			if (image.src == selectedImg) {
+				image.classList.add(`${styles.selected}`);
 			}
 		});
 	};
@@ -58,12 +72,11 @@ const Content = () => {
 		<main className={styles.main}>
 			<div className={lightroomOpen ? styles.lightroom : styles.hidden}>
 				<div className={styles.lightroom__container}>
-					<img
-						src={iconClose}
-						alt=""
-						className={styles.closeIcon}
-						onClick={lighroomToggler}
-					></img>
+					<Image
+						source={iconClose}
+						style={styles.closeIcon}
+						click={lighroomToggler}
+					/>
 					<div className={styles.bigImage}>
 						<div className={styles.currentImg}>
 							<img className="currentImg" src={image1} />
@@ -76,10 +89,26 @@ const Content = () => {
 						</div>
 					</div>
 					<div className={styles.otherImg}>
-						<img src={image1} onClick={HandlePhotoClick} />
-						<img src={image2} onClick={HandlePhotoClick} />
-						<img src={image3} onClick={HandlePhotoClick} />
-						<img src={image4} onClick={HandlePhotoClick} />
+						<img
+							src={image1}
+							className="otherLight"
+							onClick={HandlePhotoClick}
+						/>
+						<img
+							src={image2}
+							className="otherLight"
+							onClick={HandlePhotoClick}
+						/>
+						<img
+							src={image3}
+							className="otherLight"
+							onClick={HandlePhotoClick}
+						/>
+						<img
+							src={image4}
+							className="otherLight"
+							onClick={HandlePhotoClick}
+						/>
 					</div>
 				</div>
 			</div>
@@ -91,12 +120,12 @@ const Content = () => {
 				<div className={styles.otherImg}>
 					<img
 						src={image1}
-						className={styles.selected}
+						className={`${styles.selected} other`}
 						onClick={HandlePhotoClick}
 					/>
-					<img src={image2} onClick={HandlePhotoClick} />
-					<img src={image3} onClick={HandlePhotoClick} />
-					<img src={image4} onClick={HandlePhotoClick} />
+					<img src={image2} className="other" onClick={HandlePhotoClick} />
+					<img src={image3} className="other" onClick={HandlePhotoClick} />
+					<img src={image4} className="other" onClick={HandlePhotoClick} />
 				</div>
 			</div>
 			<div className={styles.main__desc}>
