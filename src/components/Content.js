@@ -8,25 +8,28 @@ import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
 import iconClose from "../images/icon-close.svg";
 
-import image1 from "../images/image-product-1.jpg";
-import image2 from "../images/image-product-2.jpg";
-import image3 from "../images/image-product-3.jpg";
-import image4 from "../images/image-product-4.jpg";
-
 const Content = () => {
-	const images = [image1, image2, image3, image4];
+	const image1 = require(`../images/image-product-1.jpg`);
+	const image2 = require(`../images/image-product-2.jpg`);
+	const image3 = require(`../images/image-product-3.jpg`);
+	const image4 = require(`../images/image-product-4.jpg`);
+	const images = { image1, image2, image3, image4 };
 
-	function handlePhotoChange(e) {
-		const currentImg = document.querySelector(".bigImg");
-		const selected = e.target.src;
-	}
+	const HandlePhotoClick = (event) => {
+		const selectedImg = event.target;
+		const currentImg = document.querySelectorAll(".currentImg");
 
+		currentImg.forEach((img) => {
+			if (selectedImg.src === img.src) {
+				return;
+			} else {
+				selectedImg.classList.add(`${styles.selected}`);
+				img.src = selectedImg.src;
+			}
+		});
+	};
 	const [lightroomOpen, toggleLightroom] = useState(false);
 	const lighroomToggler = () => toggleLightroom((p) => !p);
-
-	const Image = ({ source, id, func }) => {
-		return <img src={source} id={id} onClick={func}></img>;
-	};
 
 	const [size, setSize] = useState({
 		width: undefined,
@@ -53,44 +56,47 @@ const Content = () => {
 
 	return (
 		<main className={styles.main}>
-			{/* error somwhere*/}
 			<div className={lightroomOpen ? styles.lightroom : styles.hidden}>
 				<div className={styles.lightroom__container}>
-					{/* Export to another component -- lightroom*/}
 					<img
 						src={iconClose}
 						alt=""
 						className={styles.closeIcon}
 						onClick={lighroomToggler}
 					></img>
-					<img className={styles.mainImage} src={image1} />
-					<div className={styles.arrows}>
-						<img src={iconPrev} alt=""></img>
-						<img src={iconNext} alt=""></img>
+					<div className={styles.bigImage}>
+						<div className={styles.currentImg}>
+							<img className="currentImg" src={image1} />
+						</div>
+						<div className={styles.arrowLeft}>
+							<img src={iconPrev} alt=""></img>
+						</div>
+						<div className={styles.arrowRight}>
+							<img src={iconNext} alt=""></img>
+						</div>
 					</div>
 					<div className={styles.otherImg}>
-						<img src={image1} id={styles.mainImg} onClick={lighroomToggler} />
-						<img src={image2} id={styles.mainImg} onClick={lighroomToggler} />
-						<img src={image3} id={styles.mainImg} onClick={lighroomToggler} />
-						<img src={image4} id={styles.mainImg} onClick={lighroomToggler} />
+						<img src={image1} onClick={HandlePhotoClick} />
+						<img src={image2} onClick={HandlePhotoClick} />
+						<img src={image3} onClick={HandlePhotoClick} />
+						<img src={image4} onClick={HandlePhotoClick} />
 					</div>
 				</div>
 			</div>
+
 			<div className={styles.main__images}>
 				<div className={styles.currentImg}>
-					<img src={image1} id={styles.mainImg} onClick={lighroomToggler} />
+					<img src={image1} className="currentImg " onClick={lighroomToggler} />
 				</div>
 				<div className={styles.otherImg}>
-					{images.map((img, key) => {
-						return (
-							<img
-								id={key}
-								key={key}
-								src={img}
-								onClick={handlePhotoChange}
-							></img>
-						);
-					})}
+					<img
+						src={image1}
+						className={styles.selected}
+						onClick={HandlePhotoClick}
+					/>
+					<img src={image2} onClick={HandlePhotoClick} />
+					<img src={image3} onClick={HandlePhotoClick} />
+					<img src={image4} onClick={HandlePhotoClick} />
 				</div>
 			</div>
 			<div className={styles.main__desc}>

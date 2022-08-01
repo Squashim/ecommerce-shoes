@@ -25,9 +25,13 @@
 				cursor: pointer;
 				width: 100%;
 				border-radius: 1rem;
-				border: 5px solid $neutral0;
+				border: 5px solid transparent;
 				&:hover {
 					opacity: 0.5;
+				}
+				&.selected {
+					opacity: 0.7;
+					border: 5px solid $primary200;
 				}
 			}
 		}
@@ -133,8 +137,8 @@
 	}
 }
 .lightroom {
-	display: none;
 	position: absolute;
+	padding: 4rem 0;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -146,31 +150,75 @@
 	justify-content: center;
 	overflow: hidden;
 	&__container {
-		width: 40vw;
-		position: relative;
+		width: 45vw;
+		display: flex;
+		flex-direction: column;
 		.closeIcon {
 			display: block;
 			margin-left: auto;
-			width: 1.5rem;
+			width: 1.2rem;
 			margin-right: 2rem;
+			&:hover {
+				filter: invert(59%) sepia(79%) saturate(2523%) hue-rotate(346deg)
+					brightness(100%) contrast(102%);
+			}
+			cursor: pointer;
 		}
-		.mainImage {
-			max-width: 100%;
-			padding: 2rem;
-			border-radius: 3rem;
-		}
-		.arrows {
-			position: absolute;
+		.bigImage {
 			display: flex;
-			justify-content: space-between;
-			top: 288px;
-			width: 100%;
-			img {
+			position: relative;
+			align-items: center;
+
+			.currentImg {
+				img {
+					max-width: 100%;
+					padding: 2rem;
+					border-radius: 3rem;
+				}
+			}
+			.arrowLeft {
+				position: absolute;
+				left: 0.5rem;
 				background-color: $neutral0;
-				padding: 1rem 1.188rem;
 				border-radius: 50%;
+				padding: auto;
+				width: 50px;
+				height: 50px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				img {
+					width: 12px;
+					height: 18px;
+					cursor: pointer;
+					&:hover {
+						filter: invert(59%) sepia(79%) saturate(2523%) hue-rotate(346deg)
+							brightness(100%) contrast(102%);
+					}
+				}
+			}
+			.arrowRight {
+				position: absolute;
+				background-color: $neutral0;
+				border-radius: 50%;
+				right: 0.5rem;
+				width: 50px;
+				height: 50px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				img {
+					width: 12px;
+					height: 18px;
+					cursor: pointer;
+					&:hover {
+						filter: invert(59%) sepia(79%) saturate(2523%) hue-rotate(346deg)
+							brightness(100%) contrast(102%);
+					}
+				}
 			}
 		}
+
 		.otherImg {
 			display: grid;
 			padding: 0 4rem;
@@ -183,6 +231,10 @@
 				border: 5px solid transparent;
 				&:hover {
 					opacity: 0.5;
+				}
+				&.selected {
+					opacity: 0.7;
+					border: 5px solid $primary200;
 				}
 			}
 		}
