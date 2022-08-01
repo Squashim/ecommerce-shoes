@@ -1,18 +1,17 @@
 @import "../styles/var";
 .main {
 	min-width: 100%;
-	padding: 2rem;
+	padding: 0 2rem;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 5rem;
 	&__images {
 		max-width: 100%;
-		max-height: 100%;
 		margin: 3rem;
 		.currentImg {
 			img {
 				cursor: pointer;
-				width: 100%;
+				max-width: 100%;
 				border-radius: 1rem;
 				box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.218);
 			}
@@ -145,17 +144,47 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	overflow: hidden;
 	&__container {
-		width: 45vw;
+		width: 40vw;
+		position: relative;
 		.closeIcon {
 			display: block;
 			margin-left: auto;
 			width: 1.5rem;
-			margin-bottom: 1.5rem;
+			margin-right: 2rem;
 		}
-		img {
+		.mainImage {
 			max-width: 100%;
-			border-radius: 1rem;
+			padding: 2rem;
+			border-radius: 3rem;
+		}
+		.arrows {
+			position: absolute;
+			display: flex;
+			justify-content: space-between;
+			top: 288px;
+			width: 100%;
+			img {
+				background-color: $neutral0;
+				padding: 1rem 1.188rem;
+				border-radius: 50%;
+			}
+		}
+		.otherImg {
+			display: grid;
+			padding: 0 4rem;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 1.5rem;
+			img {
+				cursor: pointer;
+				width: 100%;
+				border-radius: 1rem;
+				border: 5px solid transparent;
+				&:hover {
+					opacity: 0.5;
+				}
+			}
 		}
 	}
 }

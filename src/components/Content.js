@@ -63,7 +63,17 @@ const Content = () => {
 						className={styles.closeIcon}
 						onClick={lighroomToggler}
 					></img>
-					<img className={styles.lighroom__main__img} src={image1} />
+					<img className={styles.mainImage} src={image1} />
+					<div className={styles.arrows}>
+						<img src={iconPrev} alt=""></img>
+						<img src={iconNext} alt=""></img>
+					</div>
+					<div className={styles.otherImg}>
+						<img src={image1} id={styles.mainImg} onClick={lighroomToggler} />
+						<img src={image2} id={styles.mainImg} onClick={lighroomToggler} />
+						<img src={image3} id={styles.mainImg} onClick={lighroomToggler} />
+						<img src={image4} id={styles.mainImg} onClick={lighroomToggler} />
+					</div>
 				</div>
 			</div>
 			<div className={styles.main__images}>
