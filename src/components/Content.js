@@ -15,22 +15,32 @@ const Content = () => {
 	const image4 = require(`../images/image-product-4.jpg`);
 	const images = { image1, image2, image3, image4 };
 
-	const Image = ({ source, style }) => {
-		const [active, setActive] = useState("");
-		const changeActive = () => {
-			setActive(`${styles.selected}`);
-		};
+	const HandlePhotoClick = (event) => {
+		const selectedImg = event.target;
+		const currentImg = document.querySelectorAll(".currentImg");
+		const otherImg = document.querySelectorAll(`.other`);
 
-		return (
-			<img
-				src={source}
-				className={(style, active)}
-				onClick={changeActive}
-			></img>
-		);
+		currentImg.forEach((img) => {
+			selectedImg.classList.add(`${styles.selected}`);
+			img.src = selectedImg.src;
+		});
+
+		if (lightroomOpen) {
+			otherImg.forEach((image) => {
+				image.classList.remove(`${styles.selected}`);
+				if (image.src == selectedImg.src) {
+					image.classList.add(`${styles.selected}`);
+				}
+			});
+		} else {
+			otherImg.forEach((image) => {
+				image.classList.remove(`${styles.selected}`);
+				if (image.src == selectedImg.src) {
+					image.classList.add(`${styles.selected}`);
+				}
+			});
+		}
 	};
-
-	const HandlePhotoClick = (event) => {};
 	const [lightroomOpen, toggleLightroom] = useState(false);
 	const lighroomToggler = () => toggleLightroom((p) => !p);
 
@@ -52,7 +62,7 @@ const Content = () => {
 	}, []);
 
 	useEffect(() => {
-		if (size.width > 768 && lightroomOpen) {
+		if (size.width < 1024 && lightroomOpen) {
 			toggleLightroom(false);
 		}
 	}, [size.width, toggleLightroom]);
@@ -63,26 +73,29 @@ const Content = () => {
 				<div className={styles.lightroom__container}>
 					<img
 						src={iconClose}
-						alt=""
 						className={styles.closeIcon}
 						onClick={lighroomToggler}
-					></img>
+					/>
 					<div className={styles.bigImage}>
 						<div className={styles.currentImg}>
-							<Image source={image1} style={"currentImg"} />
+							<img className="currentImg" src={image1} />
 						</div>
 						<div className={styles.arrowLeft}>
-							<img src={iconPrev} />
+							<img src={iconPrev} alt=""></img>
 						</div>
 						<div className={styles.arrowRight}>
-							<img src={iconNext} />
+							<img src={iconNext} alt=""></img>
 						</div>
 					</div>
 					<div className={styles.otherImg}>
-						<Image id="1" source={image1} style={"otherLight"} />
-						<Image source={image2} style={"otherLight"} />
-						<Image source={image3} style={"otherLight"} />
-						<Image source={image4} style={"otherLight"} />
+						<img
+							src={image1}
+							className={`${styles.selected} other`}
+							onClick={HandlePhotoClick}
+						/>
+						<img src={image2} className="other" onClick={HandlePhotoClick} />
+						<img src={image3} className="other" onClick={HandlePhotoClick} />
+						<img src={image4} className="other" onClick={HandlePhotoClick} />
 					</div>
 				</div>
 			</div>
@@ -90,12 +103,22 @@ const Content = () => {
 			<div className={styles.main__images}>
 				<div className={styles.currentImg}>
 					<img src={image1} className="currentImg " onClick={lighroomToggler} />
+					<div className={styles.arrowLeft}>
+						<img src={iconPrev} alt=""></img>
+					</div>
+					<div className={styles.arrowRight}>
+						<img src={iconNext} alt=""></img>
+					</div>
 				</div>
 				<div className={styles.otherImg}>
-					<Image source={image1} style={`other`} click={HandlePhotoClick} />
-					<Image source={image2} style={"other"} click={HandlePhotoClick} />
-					<Image source={image3} style={"other"} click={HandlePhotoClick} />
-					<Image source={image4} style={"other"} click={HandlePhotoClick} />
+					<img
+						src={image1}
+						className={`${styles.selected} other`}
+						onClick={HandlePhotoClick}
+					/>
+					<img src={image2} className="other" onClick={HandlePhotoClick} />
+					<img src={image3} className="other" onClick={HandlePhotoClick} />
+					<img src={image4} className="other" onClick={HandlePhotoClick} />
 				</div>
 			</div>
 			<div className={styles.main__desc}>

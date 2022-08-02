@@ -10,7 +10,12 @@ body {
 	min-height: 100vh;
 	max-width: 1320px;
 	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
 	font-family: $font-kumbh;
+	@include breakpoint(xl) {
+		font-size: larger;
+	}
 }
 button {
 	//reset to default
