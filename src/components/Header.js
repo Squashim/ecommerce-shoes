@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
+import Cart from "./Cart";
 
 import logo from "../images/logo.svg";
 import menu from "../images/icon-menu.svg";
