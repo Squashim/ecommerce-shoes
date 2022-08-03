@@ -12,6 +12,7 @@ body {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
+	position: relative;
 	font-family: $font-kumbh;
 	@include breakpoint(xl) {
 		font-size: larger;

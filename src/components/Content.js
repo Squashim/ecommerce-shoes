@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Content.module.scss";
-import Cart from "./Cart";
 
 import iconNext from "../images/icon-next.svg";
 import iconPrev from "../images/icon-previous.svg";
@@ -8,14 +7,21 @@ import iconCart from "../images/icon-cart.svg";
 import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
 import iconClose from "../images/icon-close.svg";
-
 const Content = () => {
 	const image1 = require(`../images/image-product-1.jpg`);
 	const image2 = require(`../images/image-product-2.jpg`);
 	const image3 = require(`../images/image-product-3.jpg`);
 	const image4 = require(`../images/image-product-4.jpg`);
 	const images = { image1, image2, image3, image4 };
-	const currentImg = document.querySelectorAll(".currentImg");
+
+	const addItem = () => {
+		if (amount <= 0) {
+			return;
+		} else {
+			return amount;
+		}
+	};
+
 	const otherImg = document.querySelectorAll(`.other`);
 
 	const [amount, setAmount] = useState(0);
@@ -28,6 +34,7 @@ const Content = () => {
 
 	const changeImage = (e) => {
 		const arr = e.target.className.split(" ");
+		let currentImg = document.querySelectorAll(`.currentImg`);
 		switch (arr[0]) {
 			case "left":
 				currentImg.forEach((img) => {
@@ -72,6 +79,7 @@ const Content = () => {
 
 	const HandlePhotoClick = (event) => {
 		const selectedImg = event.target;
+		let currentImg = document.querySelectorAll(`.currentImg`);
 
 		currentImg.forEach((img) => {
 			selectedImg.classList.add(`${styles.selected}`);
@@ -165,12 +173,12 @@ const Content = () => {
 
 			<div className={styles.main__images}>
 				<div className={styles.currentImg}>
-					<img src={image1} className="currentImg " onClick={lighroomToggler} />
+					<img src={image1} className="currentImg" onClick={lighroomToggler} />
 					<div onClick={changeImage} className={`left ${styles.arrowLeft}`}>
-						<img className="left" src={iconPrev} alt=""></img>
+						<img src={iconPrev} alt=""></img>
 					</div>
 					<div onClick={changeImage} className={`right ${styles.arrowRight}`}>
-						<img className="right" src={iconNext} alt=""></img>
+						<img src={iconNext} alt=""></img>
 					</div>
 				</div>
 				<div className={styles.otherImg}>
@@ -205,7 +213,7 @@ const Content = () => {
 						<p>{amount}</p>
 						<img src={iconPlus} alt="" onClick={handleIncrement}></img>
 					</div>
-					<button className={styles.cartAdd}>
+					<button onClick={addItem} className={styles.cartAdd}>
 						<img src={iconCart} alt=""></img>
 						Add to cart
 					</button>

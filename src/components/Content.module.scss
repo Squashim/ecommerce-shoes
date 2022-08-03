@@ -76,6 +76,7 @@
 		@include breakpoint(maxmd) {
 			padding: 1.5rem;
 			max-width: 450px;
+			margin: 0;
 		}
 		span {
 			color: $primary200;

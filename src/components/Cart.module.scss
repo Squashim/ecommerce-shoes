@@ -1,10 +1,40 @@
 @import "../styles/var";
 .cart {
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	position: fixed;
-	font-size: 20rem;
-	color: red;
+	width: calc(100% - 2rem);
+	min-height: 280px;
+	max-height: 400px;
+	margin: 1rem;
+	top: 4.2rem;
+	position: absolute;
+	z-index: 20;
+	border-radius: 0.5rem;
+	background-color: $neutral0;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 0 2rem rgba(black, 0.3);
+	@include breakpoint(md) {
+		max-width: 400px;
+		top: 6.5rem;
+		right: 0;
+	}
+	@include breakpoint(lg) {
+		top: 5rem;
+	}
+	&__heading {
+		width: 100%;
+		padding: 1.5rem;
+		border-bottom: 2px solid $neutral100;
+		display: block;
+	}
+	&__content {
+		width: 100%;
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		p {
+			font-weight: $fbold;
+			color: $neutral300;
+		}
+	}
 }

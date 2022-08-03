@@ -9,6 +9,10 @@ import avatar from "../images/image-avatar.png";
 import exit from "../images/icon-close.svg";
 
 const Header = () => {
+	const [openCart, setCartOpen] = useState(false);
+	const cartToggler = () => setCartOpen((p) => !p);
+	console.log(openCart);
+
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
 	const [size, setSize] = useState({
@@ -36,6 +40,8 @@ const Header = () => {
 
 	return (
 		<div className={styles.header}>
+			{openCart ? <Cart /> : ""}
+
 			<div className={`${menuOpen ? styles[`black-bg`] : {}}`}></div>
 			<div className={styles.header__content}>
 				<div className={styles.header__content__left}>
@@ -73,7 +79,7 @@ const Header = () => {
 					</nav>
 				</div>
 				<div className={styles.header__content__right}>
-					<img src={cart} alt="" id={styles.cart}></img>
+					<img src={cart} alt="" id={styles.cart} onClick={cartToggler}></img>
 					<img src={avatar} alt="" id={styles.profile}></img>
 				</div>
 			</div>
