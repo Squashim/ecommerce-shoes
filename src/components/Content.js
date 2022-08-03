@@ -17,6 +17,14 @@ const Content = () => {
 	const currentImg = document.querySelectorAll(".currentImg");
 	const otherImg = document.querySelectorAll(`.other`);
 
+	const [amount, setAmount] = useState(0);
+	const handleIncrement = () => {
+		setAmount(amount + 1);
+	};
+	const handleDecrement = () => {
+		amount > 0 ? setAmount(amount - 1) : setAmount(0);
+	};
+
 	const changeImage = (e) => {
 		const arr = e.target.className.split(" ");
 		switch (arr[0]) {
@@ -192,9 +200,9 @@ const Content = () => {
 				</div>
 				<div className={styles.buy}>
 					<div className={styles.quan}>
-						<img src={iconMinus} alt=""></img>
-						<p>0</p>
-						<img src={iconPlus} alt=""></img>
+						<img src={iconMinus} onClick={handleDecrement} alt=""></img>
+						<p>{amount}</p>
+						<img src={iconPlus} alt="" onClick={handleIncrement}></img>
 					</div>
 					<button className={styles.cartAdd}>
 						<img src={iconCart} alt=""></img>
