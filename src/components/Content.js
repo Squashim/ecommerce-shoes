@@ -14,11 +14,55 @@ const Content = () => {
 	const image3 = require(`../images/image-product-3.jpg`);
 	const image4 = require(`../images/image-product-4.jpg`);
 	const images = { image1, image2, image3, image4 };
+	const currentImg = document.querySelectorAll(".currentImg");
+	const otherImg = document.querySelectorAll(`.other`);
+
+	const changeImage = (e) => {
+		const arr = e.target.className.split(" ");
+		switch (arr[0]) {
+			case "left":
+				currentImg.forEach((img) => {
+					if (img.src.substr(21) == images.image1) {
+						img.src = images.image4;
+					} else if (img.src.substr(21) == images.image2) {
+						img.src = images.image1;
+					} else if (img.src.substr(21) == images.image3) {
+						img.src = images.image2;
+					} else if (img.src.substr(21) == images.image4) {
+						img.src = images.image3;
+					}
+					otherImg.forEach((image) => {
+						image.classList.remove(`${styles.selected}`);
+						if (image.src == img.src) {
+							image.classList.add(`${styles.selected}`);
+						} else return;
+					});
+				});
+				break;
+
+			case "right":
+				currentImg.forEach((img) => {
+					if (img.src.substr(21) == images.image1) {
+						img.src = images.image2;
+					} else if (img.src.substr(21) == images.image2) {
+						img.src = images.image3;
+					} else if (img.src.substr(21) == images.image3) {
+						img.src = images.image4;
+					} else if (img.src.substr(21) == images.image4) {
+						img.src = images.image1;
+					}
+					otherImg.forEach((image) => {
+						image.classList.remove(`${styles.selected}`);
+						if (image.src == img.src) {
+							image.classList.add(`${styles.selected}`);
+						} else return;
+					});
+				});
+		}
+	};
 
 	const HandlePhotoClick = (event) => {
 		const selectedImg = event.target;
-		const currentImg = document.querySelectorAll(".currentImg");
-		const otherImg = document.querySelectorAll(`.other`);
 
 		currentImg.forEach((img) => {
 			selectedImg.classList.add(`${styles.selected}`);
@@ -81,10 +125,20 @@ const Content = () => {
 							<img className="currentImg" src={image1} />
 						</div>
 						<div className={styles.arrowLeft}>
-							<img src={iconPrev} alt=""></img>
+							<img
+								onClick={changeImage}
+								className="left"
+								src={iconPrev}
+								alt=""
+							></img>
 						</div>
 						<div className={styles.arrowRight}>
-							<img src={iconNext} alt=""></img>
+							<img
+								onClick={changeImage}
+								className="right"
+								src={iconNext}
+								alt=""
+							></img>
 						</div>
 					</div>
 					<div className={styles.otherImg}>
@@ -103,11 +157,11 @@ const Content = () => {
 			<div className={styles.main__images}>
 				<div className={styles.currentImg}>
 					<img src={image1} className="currentImg " onClick={lighroomToggler} />
-					<div className={styles.arrowLeft}>
-						<img src={iconPrev} alt=""></img>
+					<div onClick={changeImage} className={`left ${styles.arrowLeft}`}>
+						<img className="left" src={iconPrev} alt=""></img>
 					</div>
-					<div className={styles.arrowRight}>
-						<img src={iconNext} alt=""></img>
+					<div onClick={changeImage} className={`right ${styles.arrowRight}`}>
+						<img className="right" src={iconNext} alt=""></img>
 					</div>
 				</div>
 				<div className={styles.otherImg}>
