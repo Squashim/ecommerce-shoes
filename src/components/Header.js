@@ -11,7 +11,6 @@ import exit from "../images/icon-close.svg";
 const Header = () => {
 	const [openCart, setCartOpen] = useState(false);
 	const cartToggler = () => setCartOpen((p) => !p);
-	console.log(openCart);
 
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
