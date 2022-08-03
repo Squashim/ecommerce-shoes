@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Cart.module.scss";
 
-const Cart = () => {
+export const Cart = ({ addItem }) => {
 	const [isEmpty, setEmpty] = useState(true);
 
 	const CartItem = () => {

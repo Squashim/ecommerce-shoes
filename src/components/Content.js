@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Content.module.scss";
+import Cart from "./Cart";
 
 import iconNext from "../images/icon-next.svg";
 import iconPrev from "../images/icon-previous.svg";
@@ -7,19 +8,17 @@ import iconCart from "../images/icon-cart.svg";
 import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
 import iconClose from "../images/icon-close.svg";
-const Content = () => {
+export const Content = () => {
 	const image1 = require(`../images/image-product-1.jpg`);
 	const image2 = require(`../images/image-product-2.jpg`);
 	const image3 = require(`../images/image-product-3.jpg`);
 	const image4 = require(`../images/image-product-4.jpg`);
 	const images = { image1, image2, image3, image4 };
 
+	const [data, setData] = useState("");
+
 	const addItem = () => {
-		if (amount <= 0) {
-			return;
-		} else {
-			return amount;
-		}
+		setData("This is data from Parent Component to the Child Component.");
 	};
 
 	const otherImg = document.querySelectorAll(`.other`);
@@ -213,12 +212,13 @@ const Content = () => {
 						<p>{amount}</p>
 						<img src={iconPlus} alt="" onClick={handleIncrement}></img>
 					</div>
-					<button onClick={addItem} className={styles.cartAdd}>
+					<button onClick={() => addItem()} className={styles.cartAdd}>
 						<img src={iconCart} alt=""></img>
 						Add to cart
 					</button>
 				</div>
 			</div>
+			<Cart addItem={amount} />
 		</main>
 	);
 };
