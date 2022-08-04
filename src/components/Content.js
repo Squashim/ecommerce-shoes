@@ -17,8 +17,8 @@ export const Content = () => {
 
 	const [data, setData] = useState("");
 
-	const addItem = () => {
-		setData("This is data from Parent Component to the Child Component.");
+	const addItem = (amt) => {
+		setData(amt);
 	};
 
 	const otherImg = document.querySelectorAll(`.other`);
@@ -212,7 +212,7 @@ export const Content = () => {
 						<p>{amount}</p>
 						<img src={iconPlus} alt="" onClick={handleIncrement}></img>
 					</div>
-					<button onClick={() => addItem()} className={styles.cartAdd}>
+					<button onClick={() => addItem(amount)} className={styles.cartAdd}>
 						<img src={iconCart} alt=""></img>
 						Add to cart
 					</button>

@@ -4,7 +4,7 @@ import thumbnail from "../images/image-product-1-thumbnail.jpg";
 import bin from "../images/icon-delete.svg";
 
 export const Cart = ({ addItem }) => {
-	const [isEmpty, setEmpty] = useState(false);
+	const [isEmpty, setEmpty] = useState(true);
 
 	const CartItem = () => {
 		return (
@@ -19,7 +19,12 @@ export const Cart = ({ addItem }) => {
 						<p className={styles.name}>Autumn Limited Edition Sneakers</p>
 						<p className={styles.price}>$125.00 x amount price</p>
 					</div>
-					<img src={bin} alt="" className={styles.cart__item__bin}></img>
+					<img
+						src={bin}
+						alt=""
+						onClick={setEmpty}
+						className={styles.cart__item__bin}
+					></img>
 				</div>
 				<button className={styles.cart__checkout}>Checkout</button>
 			</>
