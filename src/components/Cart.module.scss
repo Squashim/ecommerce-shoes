@@ -1,5 +1,6 @@
 @import "../styles/var";
 .cart {
+	transition: 0.3s all ease;
 	width: calc(100% - 2rem);
 	min-height: 280px;
 	max-height: 400px;
@@ -28,13 +29,61 @@
 	}
 	&__content {
 		width: 100%;
-		flex: 1;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		p {
+		flex-direction: column;
+		&__placeholder {
 			font-weight: $fbold;
 			color: $neutral300;
+		}
+	}
+	&__item {
+		align-self: flex-end;
+		display: flex;
+		flex-direction: row;
+		max-height: 6rem;
+		width: 100%;
+		padding: 1rem 1.5rem;
+		&__thumb {
+			width: 3.5rem;
+			aspect-ratio: 1/1;
+			border-radius: 0.5rem;
+		}
+		&__desc {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 0 1rem;
+			max-width: 75%;
+			.name,
+			.price {
+				line-height: 1.5rem;
+				font-weight: $fnormal;
+				color: $neutral300;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+		&__bin {
+			margin-left: auto;
+			align-self: center;
+			cursor: pointer;
+		}
+	}
+	&__checkout {
+		width: calc(100% - 2.9rem);
+		color: $neutral0;
+		text-align: center;
+		font-weight: $fbold;
+		border-radius: 0.5rem;
+		margin: 1rem;
+		padding: 1rem;
+		background-color: $primary200;
+		cursor: pointer;
+		&:hover {
+			opacity: 0.5;
 		}
 	}
 }

@@ -218,7 +218,6 @@ export const Content = () => {
 					</button>
 				</div>
 			</div>
-			<Cart addItem={amount} />
 		</main>
 	);
 };
