@@ -8,7 +8,7 @@ import iconCart from "../images/icon-cart.svg";
 import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
 import iconClose from "../images/icon-close.svg";
-export const Content = () => {
+const Content = () => {
 	const image1 = require(`../images/image-product-1.jpg`);
 	const image2 = require(`../images/image-product-2.jpg`);
 	const image3 = require(`../images/image-product-3.jpg`);
@@ -17,8 +17,8 @@ export const Content = () => {
 
 	const [data, setData] = useState("");
 
-	const addItem = (amt) => {
-		setData(amt);
+	const addItem = (amount) => {
+		setData(amount);
 	};
 
 	const otherImg = document.querySelectorAll(`.other`);
@@ -209,7 +209,7 @@ export const Content = () => {
 				<div className={styles.buy}>
 					<div className={styles.quan}>
 						<img src={iconMinus} onClick={handleDecrement} alt=""></img>
-						<p>{amount}</p>
+						<p id="quantity">{amount}</p>
 						<img src={iconPlus} alt="" onClick={handleIncrement}></img>
 					</div>
 					<button onClick={() => addItem(amount)} className={styles.cartAdd}>

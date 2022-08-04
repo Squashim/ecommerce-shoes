@@ -123,13 +123,13 @@
 			@include breakpoint(md) {
 				gap: 1.7rem;
 			}
-			&::after {
-				display: none;
-				content: "3";
+			.amountView {
+				display: flex;
 				text-align: center;
 				font-size: 0.6rem;
 				color: $neutral0;
 				position: absolute;
+				z-index: 2;
 				top: 4px;
 				left: 8px;
 				padding: 2px 8px;

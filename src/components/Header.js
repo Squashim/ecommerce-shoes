@@ -12,6 +12,12 @@ const Header = () => {
 	const [openCart, setCartOpen] = useState(false);
 	const cartToggler = () => setCartOpen((p) => !p);
 
+	const [amount, setAmount] = useState(2);
+
+	const hidden = {
+		display: "none",
+	};
+
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
 	const [size, setSize] = useState({
@@ -36,6 +42,10 @@ const Header = () => {
 			setMenuOpen(false);
 		}
 	}, [size.width, menuOpen]);
+
+	useEffect(() => {
+		console.log(amount);
+	});
 
 	return (
 		<div className={styles.header}>
@@ -78,7 +88,18 @@ const Header = () => {
 					</nav>
 				</div>
 				<div className={styles.header__content__right}>
-					<img src={cart} alt="" id={styles.cart} onClick={cartToggler}></img>
+					<span style={hidden} className={styles.amountView}>
+						{amount <= 0
+							? amount + (hidden.display = "none")
+							: amount + (hidden.display = "flex")}
+					</span>
+					<img
+						src={cart}
+						alt=""
+						className="cartIcon"
+						id={styles.cart}
+						onClick={cartToggler}
+					></img>
 					<img src={avatar} alt="" id={styles.profile}></img>
 				</div>
 			</div>
