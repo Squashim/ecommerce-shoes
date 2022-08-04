@@ -76,7 +76,7 @@
 		@include breakpoint(maxmd) {
 			padding: 1.5rem;
 			max-width: 450px;
-			margin: 0;
+			margin: 0 auto;
 		}
 		span {
 			color: $primary200;
@@ -196,7 +196,7 @@
 	}
 }
 .lightroom {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;

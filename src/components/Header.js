@@ -17,6 +17,9 @@ const Header = () => {
 	const hidden = {
 		display: "none",
 	};
+	const visible = {
+		display: "flex",
+	};
 
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
@@ -88,10 +91,11 @@ const Header = () => {
 					</nav>
 				</div>
 				<div className={styles.header__content__right}>
-					<span style={hidden} className={styles.amountView}>
-						{amount <= 0
-							? amount + (hidden.display = "none")
-							: amount + (hidden.display = "flex")}
+					<span
+						style={amount <= 0 ? hidden : visible}
+						className={styles.amountView}
+					>
+						{amount}
 					</span>
 					<img
 						src={cart}
