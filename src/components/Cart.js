@@ -33,7 +33,7 @@ export const Cart = ({ addItem }) => {
 			</div>
 			<div className={styles.cart__content}>
 				{isEmpty ? (
-					<p className={styles.cart__placeholder}>Your cart is empty.</p>
+					<p className={styles.placeholder}>Your cart is empty.</p>
 				) : (
 					<>
 						<CartItem />
