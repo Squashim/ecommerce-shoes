@@ -3,7 +3,7 @@ import styles from "./Cart.module.scss";
 import thumbnail from "../images/image-product-1-thumbnail.jpg";
 import bin from "../images/icon-delete.svg";
 
-export const Cart = ({ addItem }) => {
+export const Cart = () => {
 	const [isEmpty, setEmpty] = useState(true);
 
 	const CartItem = () => {

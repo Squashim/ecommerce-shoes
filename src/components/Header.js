@@ -12,7 +12,7 @@ const Header = () => {
 	const [openCart, setCartOpen] = useState(false);
 	const cartToggler = () => setCartOpen((p) => !p);
 
-	const [amount, setAmount] = useState(2);
+	const [amount, setAmount] = useState(0);
 
 	const hidden = {
 		display: "none",
@@ -20,6 +20,8 @@ const Header = () => {
 	const visible = {
 		display: "flex",
 	};
+
+	const data = document.querySelector("[data-amount]");
 
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
@@ -45,10 +47,6 @@ const Header = () => {
 			setMenuOpen(false);
 		}
 	}, [size.width, menuOpen]);
-
-	useEffect(() => {
-		console.log(amount);
-	});
 
 	return (
 		<div className={styles.header}>
@@ -98,6 +96,7 @@ const Header = () => {
 						{amount}
 					</span>
 					<img
+						data-amount="0"
 						src={cart}
 						alt=""
 						className="cartIcon"

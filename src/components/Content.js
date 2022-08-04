@@ -8,18 +8,27 @@ import iconCart from "../images/icon-cart.svg";
 import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
 import iconClose from "../images/icon-close.svg";
+
+export const AddButton = () => {
+	const addAmount = () => {
+		const amount = document.querySelector("#quantity").textContent;
+		const data = document.querySelector(".cartIcon");
+		data.setAttribute("data-amount", amount);
+	};
+	return (
+		<button id="addBtn" className={styles.cartAdd} onClick={addAmount}>
+			<img src={iconCart} alt=""></img>
+			Add to cart
+		</button>
+	);
+};
+
 const Content = () => {
 	const image1 = require(`../images/image-product-1.jpg`);
 	const image2 = require(`../images/image-product-2.jpg`);
 	const image3 = require(`../images/image-product-3.jpg`);
 	const image4 = require(`../images/image-product-4.jpg`);
 	const images = { image1, image2, image3, image4 };
-
-	const [data, setData] = useState("");
-
-	const addItem = (amount) => {
-		setData(amount);
-	};
 
 	const otherImg = document.querySelectorAll(`.other`);
 
@@ -212,10 +221,7 @@ const Content = () => {
 						<p id="quantity">{amount}</p>
 						<img src={iconPlus} alt="" onClick={handleIncrement}></img>
 					</div>
-					<button onClick={() => addItem(amount)} className={styles.cartAdd}>
-						<img src={iconCart} alt=""></img>
-						Add to cart
-					</button>
+					<AddButton />
 				</div>
 			</div>
 		</main>
