@@ -9,19 +9,28 @@ import avatar from "../images/image-avatar.png";
 import exit from "../images/icon-close.svg";
 
 const Header = () => {
+	const AmountViewer = () => {
+		const hidden = {
+			display: "none",
+		};
+		const visible = {
+			display: "flex",
+		};
+
+		return (
+			<span id="cartValue" className={styles.amountView} style={hidden}>
+				0
+			</span>
+		);
+	};
+
 	const [openCart, setCartOpen] = useState(false);
 	const cartToggler = () => setCartOpen((p) => !p);
 
-	const [amount, setAmount] = useState(0);
-
-	const hidden = {
-		display: "none",
-	};
-	const visible = {
-		display: "flex",
-	};
-
-	const data = document.querySelector("[data-amount]");
+	useEffect(() => {
+		let amount = document.querySelector("#cartValue");
+		console.log(amount);
+	});
 
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
@@ -89,14 +98,9 @@ const Header = () => {
 					</nav>
 				</div>
 				<div className={styles.header__content__right}>
-					<span
-						style={amount <= 0 ? hidden : visible}
-						className={styles.amountView}
-					>
-						{amount}
-					</span>
+					<AmountViewer />
+
 					<img
-						data-amount="0"
 						src={cart}
 						alt=""
 						className="cartIcon"

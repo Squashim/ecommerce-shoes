@@ -11,9 +11,9 @@ import iconClose from "../images/icon-close.svg";
 
 export const AddButton = () => {
 	const addAmount = () => {
-		const amount = document.querySelector("#quantity").textContent;
-		const data = document.querySelector(".cartIcon");
-		data.setAttribute("data-amount", amount);
+		let amount = document.querySelector("#quantity").textContent;
+		let cart = document.querySelector("#cartValue");
+		cart.textContent = amount;
 	};
 	return (
 		<button id="addBtn" className={styles.cartAdd} onClick={addAmount}>
