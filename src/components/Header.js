@@ -8,7 +8,7 @@ import cart from "../images/icon-cart.svg";
 import avatar from "../images/image-avatar.png";
 import exit from "../images/icon-close.svg";
 
-export const Header = ({ selectedValue }) => {
+export const Header = ({ selectedValue, setSelectedValue }) => {
 	const [openCart, setCartOpen] = useState(false);
 	const cartToggler = () => setCartOpen((p) => !p);
 
@@ -46,7 +46,14 @@ export const Header = ({ selectedValue }) => {
 
 	return (
 		<div className={styles.header}>
-			{openCart ? <Cart selectedValue={selectedValue} /> : ""}
+			{openCart ? (
+				<Cart
+					selectedValue={selectedValue}
+					setSelectedValue={setSelectedValue}
+				/>
+			) : (
+				""
+			)}
 
 			<div className={`${menuOpen ? styles[`black-bg`] : {}}`}></div>
 			<div className={styles.header__content}>

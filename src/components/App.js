@@ -8,8 +8,14 @@ function App() {
 
 	return (
 		<>
-			<Header selectedValue={selectedValue} />
-			<Content setSelectedValue={setSelectedValue} />
+			<Header
+				selectedValue={selectedValue}
+				setSelectedValue={setSelectedValue}
+			/>
+			<Content
+				selectedValue={selectedValue}
+				setSelectedValue={setSelectedValue}
+			/>
 			<Footer />
 		</>
 	);

@@ -135,6 +135,10 @@
 				padding: 2px 8px;
 				border-radius: 10px;
 				background-color: $primary200;
+				pointer-events: none;
+				@media (max-width: 48em) {
+					top: -6px;
+				}
 			}
 			#cart {
 				margin: auto;

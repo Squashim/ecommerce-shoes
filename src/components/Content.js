@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Content.module.scss";
-import Cart from "./Cart";
 
 import iconNext from "../images/icon-next.svg";
 import iconPrev from "../images/icon-previous.svg";
