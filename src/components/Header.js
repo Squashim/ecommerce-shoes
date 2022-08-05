@@ -8,29 +8,16 @@ import cart from "../images/icon-cart.svg";
 import avatar from "../images/image-avatar.png";
 import exit from "../images/icon-close.svg";
 
-const Header = () => {
-	const AmountViewer = () => {
-		const hidden = {
-			display: "none",
-		};
-		const visible = {
-			display: "flex",
-		};
-
-		return (
-			<span id="cartValue" className={styles.amountView} style={hidden}>
-				0
-			</span>
-		);
-	};
-
+export const Header = ({ selectedValue }) => {
 	const [openCart, setCartOpen] = useState(false);
 	const cartToggler = () => setCartOpen((p) => !p);
 
-	useEffect(() => {
-		let amount = document.querySelector("#cartValue");
-		console.log(amount);
-	});
+	const hidden = {
+		display: "none",
+	};
+	const visible = {
+		display: "flex",
+	};
 
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuToggler = () => setMenuOpen((p) => !p);
@@ -59,7 +46,7 @@ const Header = () => {
 
 	return (
 		<div className={styles.header}>
-			{openCart ? <Cart /> : ""}
+			{openCart ? <Cart selectedValue={selectedValue} /> : ""}
 
 			<div className={`${menuOpen ? styles[`black-bg`] : {}}`}></div>
 			<div className={styles.header__content}>
@@ -98,7 +85,13 @@ const Header = () => {
 					</nav>
 				</div>
 				<div className={styles.header__content__right}>
-					<AmountViewer />
+					<span
+						id="cartValue"
+						className={styles.amountView}
+						style={selectedValue <= 0 ? hidden : visible}
+					>
+						{selectedValue}
+					</span>
 
 					<img
 						src={cart}
@@ -107,6 +100,7 @@ const Header = () => {
 						id={styles.cart}
 						onClick={cartToggler}
 					></img>
+
 					<img src={avatar} alt="" id={styles.profile}></img>
 				</div>
 			</div>

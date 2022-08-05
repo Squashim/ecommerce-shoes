@@ -3,11 +3,21 @@ import styles from "./Cart.module.scss";
 import thumbnail from "../images/image-product-1-thumbnail.jpg";
 import bin from "../images/icon-delete.svg";
 
-export const Cart = () => {
+export const Cart = ({ selectedValue }) => {
 	const [isEmpty, setEmpty] = useState(true);
+	const black = {
+		color: "black",
+		fontWeight: "bold",
+	};
 
-	const CartItem = () => {
-		return (
+	const emptySetter = () => {
+		setEmpty(true);
+	};
+
+	const ShowContent = () => {
+		return selectedValue <= 0 ? (
+			<p className={styles.placeholder}>Your cart is empty.</p>
+		) : (
 			<>
 				<div className={styles.cart__item}>
 					<img
@@ -17,12 +27,15 @@ export const Cart = () => {
 					></img>
 					<div className={styles.cart__item__desc}>
 						<p className={styles.name}>Autumn Limited Edition Sneakers</p>
-						<p className={styles.price}>$125.00 x amount price</p>
+						<p className={styles.price}>
+							$125.00 x {selectedValue}{" "}
+							<span style={black}>{`$${125 * selectedValue}.00`}</span>
+						</p>
 					</div>
 					<img
 						src={bin}
 						alt=""
-						onClick={setEmpty}
+						onClick={emptySetter}
 						className={styles.cart__item__bin}
 					></img>
 				</div>
@@ -40,9 +53,7 @@ export const Cart = () => {
 				{isEmpty ? (
 					<p className={styles.placeholder}>Your cart is empty.</p>
 				) : (
-					<>
-						<CartItem />
-					</>
+					<ShowContent />
 				)}
 			</div>
 		</div>

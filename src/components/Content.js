@@ -9,21 +9,25 @@ import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
 import iconClose from "../images/icon-close.svg";
 
-export const AddButton = () => {
-	const addAmount = () => {
-		let amount = document.querySelector("#quantity").textContent;
-		let cart = document.querySelector("#cartValue");
-		cart.textContent = amount;
+const Content = ({ setSelectedValue }) => {
+	const AddButton = () => {
+		const addAmount = (value) => {
+			setSelectedValue(value);
+		};
+		return (
+			<button
+				id="addBtn"
+				className={styles.cartAdd}
+				onClick={() =>
+					addAmount(document.querySelector("#quantity").textContent)
+				}
+			>
+				<img src={iconCart} alt=""></img>
+				Add to cart
+			</button>
+		);
 	};
-	return (
-		<button id="addBtn" className={styles.cartAdd} onClick={addAmount}>
-			<img src={iconCart} alt=""></img>
-			Add to cart
-		</button>
-	);
-};
 
-const Content = () => {
 	const image1 = require(`../images/image-product-1.jpg`);
 	const image2 = require(`../images/image-product-2.jpg`);
 	const image3 = require(`../images/image-product-3.jpg`);
