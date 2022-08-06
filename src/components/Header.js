@@ -45,7 +45,7 @@ export const Header = ({ selectedValue, setSelectedValue }) => {
 	}, [size.width, menuOpen]);
 
 	return (
-		<div className={styles.header}>
+		<header className={styles.header}>
 			{openCart ? (
 				<Cart
 					selectedValue={selectedValue}
@@ -111,7 +111,7 @@ export const Header = ({ selectedValue, setSelectedValue }) => {
 					<img src={avatar} alt="" id={styles.profile}></img>
 				</div>
 			</div>
-		</div>
+		</header>
 	);
 };
 

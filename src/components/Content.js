@@ -140,13 +140,14 @@ const Content = ({ setSelectedValue }) => {
 			<div className={lightroomOpen ? styles.lightroom : styles.hidden}>
 				<div className={styles.lightroom__container}>
 					<img
+						alt=""
 						src={iconClose}
 						className={styles.closeIcon}
 						onClick={lighroomToggler}
 					/>
 					<div className={styles.bigImage}>
 						<div className={styles.currentImg}>
-							<img id="1" className="currentImg" src={image1} />
+							<img id="1" className="currentImg" src={image1} alt="" />
 						</div>
 						<div className={styles.arrowLeft}>
 							<img
@@ -171,24 +172,28 @@ const Content = ({ setSelectedValue }) => {
 							className={`${styles.selected} other`}
 							onClick={HandlePhotoClick}
 							id="2"
+							alt=""
 						/>
 						<img
 							src={image2}
 							id="3"
 							className="other"
 							onClick={HandlePhotoClick}
+							alt=""
 						/>
 						<img
 							src={image3}
 							id="4"
 							className="other"
 							onClick={HandlePhotoClick}
+							alt=""
 						/>
 						<img
 							src={image4}
 							id="5"
 							className="other"
 							onClick={HandlePhotoClick}
+							alt=""
 						/>
 					</div>
 				</div>
@@ -201,6 +206,7 @@ const Content = ({ setSelectedValue }) => {
 						className="currentImg"
 						id="6"
 						onClick={lighroomToggler}
+						alt=""
 					/>
 					<div onClick={changeImage} className={`left ${styles.arrowLeft}`}>
 						<img src={iconPrev} alt=""></img>
@@ -215,24 +221,28 @@ const Content = ({ setSelectedValue }) => {
 						src={image1}
 						className={`${styles.selected} other`}
 						onClick={HandlePhotoClick}
+						alt=""
 					/>
 					<img
 						src={image2}
 						id="8"
 						className="other"
 						onClick={HandlePhotoClick}
+						alt=""
 					/>
 					<img
 						src={image3}
 						id="9"
 						className="other"
 						onClick={HandlePhotoClick}
+						alt=""
 					/>
 					<img
 						src={image4}
 						id="10"
 						className="other"
 						onClick={HandlePhotoClick}
+						alt=""
 					/>
 				</div>
 			</div>
