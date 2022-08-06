@@ -33,8 +33,6 @@ const Content = ({ setSelectedValue }) => {
 	const image4 = require(`../images/image-product-4.jpg`);
 	const images = { image1, image2, image3, image4 };
 
-	const otherImg = document.querySelectorAll(`.other`);
-
 	const [amount, setAmount] = useState(0);
 	const handleIncrement = () => {
 		setAmount(amount + 1);
@@ -46,16 +44,19 @@ const Content = ({ setSelectedValue }) => {
 	const changeImage = (e) => {
 		const arr = e.target.className.split(" ");
 		let currentImg = document.querySelectorAll(`.currentImg`);
+		let otherImg = document.querySelectorAll(`.other`);
 		switch (arr[0]) {
 			case "left":
 				currentImg.forEach((img) => {
-					if (img.src.substr(21) == images.image1) {
+					console.log(img.src);
+					console.log(images.image1);
+					if (img.src == images.image1) {
 						img.src = images.image4;
-					} else if (img.src.substr(21) == images.image2) {
+					} else if (img.src == images.image2) {
 						img.src = images.image1;
-					} else if (img.src.substr(21) == images.image3) {
+					} else if (img.src == images.image3) {
 						img.src = images.image2;
-					} else if (img.src.substr(21) == images.image4) {
+					} else if (img.src == images.image4) {
 						img.src = images.image3;
 					}
 					otherImg.forEach((image) => {
@@ -69,13 +70,13 @@ const Content = ({ setSelectedValue }) => {
 
 			case "right":
 				currentImg.forEach((img) => {
-					if (img.src.substr(21) == images.image1) {
+					if (img.src == images.image1) {
 						img.src = images.image2;
-					} else if (img.src.substr(21) == images.image2) {
+					} else if (img.src == images.image2) {
 						img.src = images.image3;
-					} else if (img.src.substr(21) == images.image3) {
+					} else if (img.src == images.image3) {
 						img.src = images.image4;
-					} else if (img.src.substr(21) == images.image4) {
+					} else if (img.src == images.image4) {
 						img.src = images.image1;
 					}
 					otherImg.forEach((image) => {
@@ -89,29 +90,24 @@ const Content = ({ setSelectedValue }) => {
 	};
 
 	const HandlePhotoClick = (event) => {
-		const selectedImg = event.target;
+		let selectedImg = event.target;
 		let currentImg = document.querySelectorAll(`.currentImg`);
+		let otherImg = document.querySelectorAll(`.other`);
+
+		otherImg.forEach((image) => {
+			image.classList.remove(`${styles.selected}`);
+		});
 
 		currentImg.forEach((img) => {
 			selectedImg.classList.add(`${styles.selected}`);
 			img.src = selectedImg.src;
 		});
 
-		if (lightroomOpen) {
-			otherImg.forEach((image) => {
-				image.classList.remove(`${styles.selected}`);
-				if (image.src == selectedImg.src) {
-					image.classList.add(`${styles.selected}`);
-				}
-			});
-		} else {
-			otherImg.forEach((image) => {
-				image.classList.remove(`${styles.selected}`);
-				if (image.src == selectedImg.src) {
-					image.classList.add(`${styles.selected}`);
-				}
-			});
-		}
+		otherImg.forEach((image) => {
+			if (selectedImg.src == image.src) {
+				image.classList.add(`${styles.selected}`);
+			}
+		});
 	};
 	const [lightroomOpen, toggleLightroom] = useState(false);
 	const lighroomToggler = () => toggleLightroom((p) => !p);
@@ -150,7 +146,7 @@ const Content = ({ setSelectedValue }) => {
 					/>
 					<div className={styles.bigImage}>
 						<div className={styles.currentImg}>
-							<img className="currentImg" src={image1} />
+							<img id="1" className="currentImg" src={image1} />
 						</div>
 						<div className={styles.arrowLeft}>
 							<img
@@ -174,17 +170,38 @@ const Content = ({ setSelectedValue }) => {
 							src={image1}
 							className={`${styles.selected} other`}
 							onClick={HandlePhotoClick}
+							id="2"
 						/>
-						<img src={image2} className="other" onClick={HandlePhotoClick} />
-						<img src={image3} className="other" onClick={HandlePhotoClick} />
-						<img src={image4} className="other" onClick={HandlePhotoClick} />
+						<img
+							src={image2}
+							id="3"
+							className="other"
+							onClick={HandlePhotoClick}
+						/>
+						<img
+							src={image3}
+							id="4"
+							className="other"
+							onClick={HandlePhotoClick}
+						/>
+						<img
+							src={image4}
+							id="5"
+							className="other"
+							onClick={HandlePhotoClick}
+						/>
 					</div>
 				</div>
 			</div>
 
 			<div className={styles.main__images}>
 				<div className={styles.currentImg}>
-					<img src={image1} className="currentImg" onClick={lighroomToggler} />
+					<img
+						src={image1}
+						className="currentImg"
+						id="6"
+						onClick={lighroomToggler}
+					/>
 					<div onClick={changeImage} className={`left ${styles.arrowLeft}`}>
 						<img src={iconPrev} alt=""></img>
 					</div>
@@ -194,13 +211,29 @@ const Content = ({ setSelectedValue }) => {
 				</div>
 				<div className={styles.otherImg}>
 					<img
+						id="7"
 						src={image1}
 						className={`${styles.selected} other`}
 						onClick={HandlePhotoClick}
 					/>
-					<img src={image2} className="other" onClick={HandlePhotoClick} />
-					<img src={image3} className="other" onClick={HandlePhotoClick} />
-					<img src={image4} className="other" onClick={HandlePhotoClick} />
+					<img
+						src={image2}
+						id="8"
+						className="other"
+						onClick={HandlePhotoClick}
+					/>
+					<img
+						src={image3}
+						id="9"
+						className="other"
+						onClick={HandlePhotoClick}
+					/>
+					<img
+						src={image4}
+						id="10"
+						className="other"
+						onClick={HandlePhotoClick}
+					/>
 				</div>
 			</div>
 			<div className={styles.main__desc}>

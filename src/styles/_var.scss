@@ -55,13 +55,13 @@ $xl: 90em;
 	max-width: 100%;
 	width: 50px;
 	left: 0.7rem;
+	z-index: 8;
 
 	background-color: $neutral0;
 	position: absolute;
 	align-self: center;
 	box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
 	img {
-		z-index: 0;
 		margin: 0 auto;
 		padding: 1rem;
 	}
@@ -82,11 +82,10 @@ $xl: 90em;
 	right: 0.7rem;
 	background-color: $neutral0;
 	position: absolute;
-	z-index: 12;
+	z-index: 8;
 	align-self: center;
 	box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
 	img {
-		z-index: 0;
 		margin: 0 auto;
 		padding: 1rem;
 	}

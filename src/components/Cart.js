@@ -39,7 +39,12 @@ export const Cart = ({ selectedValue, setSelectedValue }) => {
 								onClick={() => setSelectedValue("0")}
 							></img>
 						</div>
-						<button className={styles.cart__checkout}>Checkout</button>
+						<button
+							className={styles.cart__checkout}
+							onClick={() => setSelectedValue("0")}
+						>
+							Checkout
+						</button>
 					</>
 				)}
 			</div>
