@@ -50,13 +50,13 @@ const Content = ({ setSelectedValue }) => {
 				currentImg.forEach((img) => {
 					console.log(img.src);
 					console.log(images.image1);
-					if (img.src == images.image1) {
+					if (img.src.substr(26) == images.image1) {
 						img.src = images.image4;
-					} else if (img.src == images.image2) {
+					} else if (img.src.substr(26) == images.image2) {
 						img.src = images.image1;
-					} else if (img.src == images.image3) {
+					} else if (img.src.substr(26) == images.image3) {
 						img.src = images.image2;
-					} else if (img.src == images.image4) {
+					} else if (img.src.substr(26) == images.image4) {
 						img.src = images.image3;
 					}
 					otherImg.forEach((image) => {
@@ -70,13 +70,13 @@ const Content = ({ setSelectedValue }) => {
 
 			case "right":
 				currentImg.forEach((img) => {
-					if (img.src == images.image1) {
+					if (img.src.substr(26) == images.image1) {
 						img.src = images.image2;
-					} else if (img.src == images.image2) {
+					} else if (img.src.substr(26) == images.image2) {
 						img.src = images.image3;
-					} else if (img.src == images.image3) {
+					} else if (img.src.substr(26) == images.image3) {
 						img.src = images.image4;
-					} else if (img.src == images.image4) {
+					} else if (img.src.substr(26) == images.image4) {
 						img.src = images.image1;
 					}
 					otherImg.forEach((image) => {
