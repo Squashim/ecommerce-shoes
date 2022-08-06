@@ -32,11 +32,11 @@ Your users should be able to:
 <table>
         <tr>
             <td>
-                <img src="src/images/mobile.jpg"
+                <img src="src/images/mobile.png"
                     alt="Mobile solution" title="Mobile solution" width="100%"/>
             </td>
             <td>
-                <img src="src/images/desktop.jpg"
+                <img src="src/images/desktop.png"
                     alt="Desktop solution" width="100%" title="Desktop solution"/>
             </td>
         </tr>
